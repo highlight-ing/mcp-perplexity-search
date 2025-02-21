@@ -17,13 +17,6 @@ import {
 	type PromptTemplate,
 } from './prompt-templates.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const pkg = JSON.parse(
-	readFileSync(join(__dirname, '..', 'package.json'), 'utf8'),
-);
-const { name, version } = pkg;
-
 const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
 if (!PERPLEXITY_API_KEY) {
 	throw new Error(
@@ -46,7 +39,7 @@ class PerplexityServer {
 
 	constructor() {
 		this.server = new Server(
-			{ name, version },
+			{ name: "Perplexity", version: "0.0.1" },
 			{
 				capabilities: {
 					tools: {},
